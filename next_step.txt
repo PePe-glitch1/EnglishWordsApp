@@ -1,0 +1,1 @@
+1) You nead to do file with foncktional randon words in app (only logick)
