@@ -1,2 +1,2 @@
-1) You nead to do file with foncktional randon words in app (only logick)!
-2)
+1) You need to do file with functional random words in app (only logic)!
+2) 
