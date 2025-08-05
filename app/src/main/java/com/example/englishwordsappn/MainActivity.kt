@@ -2,9 +2,11 @@ package com.example.englishwordsappn
 
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.example.englishwordsappn.databinding.ActivityLearnWordBinding
@@ -43,12 +45,17 @@ class MainActivity : AppCompatActivity() {
             markAnswerNeutral(
                 binding.llAnswer1,
                 binding.tvVariantValue1,
-                binding.tvVariantNumb1
+                binding.tvVariantNumb1,
+                binding.clFinalScoreboard,
+                binding.btSlip
             )
             markAnswerNeutral(
                 binding.llAnswer2,
                 binding.tvVariantValue2,
-                binding.tvVariantNumb2
+                binding.tvVariantNumb2,
+                binding.clFinalScoreboard,
+                binding.btSlip
+
             )
         }
 
@@ -120,6 +127,8 @@ class MainActivity : AppCompatActivity() {
         llAnswer: LinearLayout,
         tvVariantValue: TextView,
         tvVariantNumb: TextView,
+        clFinalScoreboard: ConstraintLayout,
+        btSlip: Button
     ) {
 
         llAnswer.background = ContextCompat.getDrawable(
@@ -149,6 +158,9 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         }
+        clFinalScoreboard.isVisible = false
+        btSlip.isVisible = true
+
     }
 
     private fun showResultMessage(isCorrect: Boolean) {
