@@ -4,4 +4,8 @@
     <string name="buton_skip">SKIP</string>
     <string name="text_correct">Correct!</string>
     <string name="text_wrong">Wrong!</string>
+    <string name="text_start_screen" translatable="false">Learn!</string>
+    <string name="buton_start_studying">Start studying</string>
+    <string name="button_progres_learn">progres</string>
+    <string name="button_settings">Settings</string>
 </resources>

@@ -13,7 +13,6 @@ import com.example.englishwordsappn.databinding.ActivityLearnWordBinding
 import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
-
     private var _binding: ActivityLearnWordBinding? = null
     val binding
         get() = _binding ?: throw IllegalStateException("Binding is not initialized")
