@@ -5,4 +5,5 @@
     <color name="textVariantsColor">#888992</color>
     <color name="falseColor">#FA4169</color>
     <color name="trueColor">#0EAD69</color>
+    <color name="text_color">#202027</color>
 </resources>

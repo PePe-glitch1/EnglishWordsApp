@@ -31,8 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibTurnOff"
-        tools:text="Galaxy"
-        tools:ignore="HardcodedText" />
+        tools:text="Galaxy" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -175,11 +174,13 @@
 
     </LinearLayout>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btSlip"
         android:layout_width="311dp"
         android:layout_height="58dp"
         android:backgroundTint="#2574FF"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_button_footer"
         android:text="@string/buton_skip"
         android:textAllCaps="true"
         android:fontFamily="@font/nunito_regular"
