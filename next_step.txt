@@ -1,4 +1,0 @@
-1) You need to do file with functional random words in app (only logic)! +
-2) Repeat everything you learned!
-3) Add stiles to buttons in start screen!
-4)
