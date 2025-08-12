@@ -38,7 +38,8 @@ class LearningWords {
             notLearnedList.shuffled().take(NUMBER_OF_ANSWERS)
         }
 
-        val correctAnswer = questionWords.random()
+        val correctAnswer: Word = questionWords.random()
+
         currentQuestion = Question(
             variants = questionWords,
             correctAnswer = correctAnswer

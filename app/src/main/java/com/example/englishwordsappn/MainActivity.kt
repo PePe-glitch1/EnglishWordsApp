@@ -12,6 +12,7 @@ import androidx.core.view.isVisible
 import com.example.englishwordsappn.databinding.ActivityLearnWordBinding
 import org.w3c.dom.Text
 
+
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityLearnWordBinding? = null
     val binding
@@ -22,42 +23,138 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityLearnWordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.llAnswer2.setOnClickListener {
-            markAsCorrect(
-                binding.llAnswer2,
-                binding.tvVariantValue2,
-                binding.tvVariantNumb2
-            )
-            showResultMessage(isCorrect = true)
+        val trainer = LearningWords()
+        showNextQuestion(trainer)
+
+        with(binding) {
+            btFinalContinue.setOnClickListener {
+                clFinalScoreboard.isVisible = false
+                btSlip.isVisible = true
+                markAnswerNeutral(
+                    llAnswer1,
+                    tvVariantValue1,
+                    tvVariantNumb1,
+                    clFinalScoreboard,
+                    btSlip
+                )
+                markAnswerNeutral(
+                    llAnswer2,
+                    tvVariantValue2,
+                    tvVariantNumb2,
+                    clFinalScoreboard,
+                    btSlip
+                )
+                markAnswerNeutral(
+                    llAnswer3,
+                    tvVariantValue3,
+                    tvVariantNumb3,
+                    clFinalScoreboard,
+                    btSlip
+                )
+                markAnswerNeutral(
+                    llAnswer4,
+                    tvVariantValue4,
+                    tvVariantNumb4,
+                    clFinalScoreboard,
+                    btSlip
+                )
+                showNextQuestion(trainer)
+            }
+            btSlip.setOnClickListener {
+                showNextQuestion(trainer)
+            }
         }
 
-        binding.llAnswer1.setOnClickListener {
-            markAsWrong(
-                binding.llAnswer1,
-                binding.tvVariantValue1,
-                binding.tvVariantNumb1
-            )
-            showResultMessage(isCorrect = false)
+    }
+
+    private fun showNextQuestion(trainer: LearningWords) {
+        val firstirstQuestion: Question? = trainer.getNextQuestion()
+        with(binding) {
+            if (firstirstQuestion == null || firstirstQuestion.variants.size < NUMBER_OF_ANSWERS) {
+                tvQuestionWord.isVisible = false
+                layoutVariants.isVisible = false
+                btSlip.text = "Complete"
+            } else {
+                btSlip.isVisible = true
+                tvQuestionWord.isVisible = true
+                tvQuestionWord.text = firstirstQuestion.correctAnswer.word
+
+                tvVariantValue1.text = firstirstQuestion.variants[0].translation
+                tvVariantValue2.text = firstirstQuestion.variants[1].translation
+                tvVariantValue3.text = firstirstQuestion.variants[2].translation
+                tvVariantValue4.text = firstirstQuestion.variants[3].translation
+
+                llAnswer1.setOnClickListener {
+                    if (trainer.checkAnswer(0)){
+                        markAsCorrect(
+                            llAnswer1,
+                            tvVariantValue1,
+                            tvVariantNumb1
+                        )
+                        showResultMessage(true)
+                    } else {
+                        markAsWrong(
+                            llAnswer1,
+                            tvVariantValue1,
+                            tvVariantNumb1
+                        )
+                        showResultMessage(false)
+                    }
+                }
+                llAnswer2.setOnClickListener {
+                    if (trainer.checkAnswer(1)){
+                        markAsCorrect(
+                            llAnswer2,
+                            tvVariantValue2,
+                            tvVariantNumb2
+                        )
+                        showResultMessage(true)
+                    } else {
+                        markAsWrong(
+                            llAnswer2,
+                            tvVariantValue2,
+                            tvVariantNumb2
+                        )
+                        showResultMessage(false)
+                    }
+                }
+                llAnswer3.setOnClickListener {
+                    if (trainer.checkAnswer(2)) {
+                        markAsCorrect(
+                            llAnswer3,
+                            tvVariantValue3,
+                            tvVariantNumb3
+                        )
+                        showResultMessage(true)
+                    } else {
+                        markAsWrong(
+                            llAnswer3,
+                            tvVariantValue3,
+                            tvVariantNumb3
+                        )
+                        showResultMessage(false)
+                    }
+                }
+                llAnswer4.setOnClickListener {
+                    if (trainer.checkAnswer(3)) {
+                        markAsCorrect(
+                            llAnswer4,
+                            tvVariantValue4,
+                            tvVariantNumb4
+                        )
+                        showResultMessage(true)
+                    } else {
+                        markAsWrong(
+                            llAnswer4,
+                            tvVariantValue4,
+                            tvVariantNumb4
+                        )
+                        showResultMessage(false)
+                    }
+                }
+            }
+
         }
-
-        binding.btFinalContinue.setOnClickListener {
-            markAnswerNeutral(
-                binding.llAnswer1,
-                binding.tvVariantValue1,
-                binding.tvVariantNumb1,
-                binding.clFinalScoreboard,
-                binding.btSlip
-            )
-            markAnswerNeutral(
-                binding.llAnswer2,
-                binding.tvVariantValue2,
-                binding.tvVariantNumb2,
-                binding.clFinalScoreboard,
-                binding.btSlip
-
-            )
-        }
-
     }
 
     private fun MainActivity.markAsWrong(
