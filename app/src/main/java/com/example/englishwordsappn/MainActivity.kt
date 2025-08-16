@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityLearnWordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        returnToStartScreen()
+
         val trainer = LearningWords()
         showNextQuestion(trainer)
 
@@ -65,6 +67,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun returnToStartScreen() {
+        binding.ibTurnOff.setOnClickListener {
+            var intent = android.content.Intent(this, StartScreenActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun showNextQuestion(trainer: LearningWords) {
