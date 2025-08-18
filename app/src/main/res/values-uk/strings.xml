@@ -4,7 +4,7 @@
     <string name="buton_skip">Пропустити</string>
     <string name="text_correct">Правильно!</string>
     <string name="text_wrong">Невірно!</string>
-    <string name="buton_start_studying">Почати навчання</string>
-    <string name="button_progres_learn">прогрес</string>
-    <string name="button_settings">налаштування</string>
+    <string name="buton_start_studying">Розпочати</string>
+    <string name="button_progres_learn">Прогрес</string>
+    <string name="button_settings">Налаштування</string>
 </resources>
