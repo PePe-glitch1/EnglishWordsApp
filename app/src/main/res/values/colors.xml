@@ -6,4 +6,5 @@
     <color name="falseColor">#FA4169</color>
     <color name="trueColor">#0EAD69</color>
     <color name="text_color">#202027</color>
+    <color name="menu_background_color">#2574FF</color>
 </resources>
