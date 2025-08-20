@@ -5,13 +5,27 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.englishwordsappn.databinding.ActivityStartScreenBinding
+import com.example.englishwordsappn.databinding.ActivityStatisticsBinding
 
 class StatisticsActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_statistics)
+        private var _binding: ActivityStatisticsBinding? = null
+        val binding
+        get() = _binding ?: throw IllegalStateException("Binding is not initialized")
 
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            _binding = ActivityStatisticsBinding.inflate(layoutInflater)
+            setContentView(binding.root)
 
+            returnToStartScreen()
+    }
+
+    private fun returnToStartScreen() {
+        binding.ibTurnOff.setOnClickListener {
+            var intent = android.content.Intent(this, StartScreenActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

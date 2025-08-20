@@ -1,6 +1,5 @@
 package com.example.englishwordsappn
 
-import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
@@ -10,10 +9,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.example.englishwordsappn.databinding.ActivityLearnWordBinding
-import org.w3c.dom.Text
 
 
-class MainActivity : AppCompatActivity() {
+class LearnWordActivity : AppCompatActivity() {
     private var _binding: ActivityLearnWordBinding? = null
     val binding
         get() = _binding ?: throw IllegalStateException("Binding is not initialized")
@@ -167,69 +165,69 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun MainActivity.markAsWrong(
+    private fun LearnWordActivity.markAsWrong(
         llAnswer: LinearLayout,
         tvVariantValue: TextView,
         tvVariantNumb: TextView,
     ) {
         llAnswer.background = ContextCompat.getDrawable(
-            this@MainActivity,
+            this@LearnWordActivity,
             R.drawable.shape_rounded_containers_incorrect
         )
 
         tvVariantValue.setTextColor(
             ContextCompat.getColor(
-                this@MainActivity,
+                this@LearnWordActivity,
                 R.color.falseColor
             )
         )
 
         tvVariantNumb.apply {
             background = ContextCompat.getDrawable(
-                this@MainActivity,
+                this@LearnWordActivity,
                 R.drawable.shape_rounded_fals
             )
             setTextColor(
                 ContextCompat.getColor(
-                    this@MainActivity,
+                    this@LearnWordActivity,
                     R.color.white
                 )
             )
         }
     }
 
-    private fun MainActivity.markAsCorrect(
+    private fun LearnWordActivity.markAsCorrect(
         llAnswer: LinearLayout,
         tvVariantValue: TextView,
         tvVariantNumb: TextView,
     ) {
         llAnswer.background = ContextCompat.getDrawable(
-            this@MainActivity,
+            this@LearnWordActivity,
             R.drawable.shape_rounded_containers_correct
         )
 
         tvVariantValue.setTextColor(
             ContextCompat.getColor(
-                this@MainActivity,
+                this@LearnWordActivity,
                 R.color.trueColor
             )
         )
 
         tvVariantNumb.apply {
             background = ContextCompat.getDrawable(
-                this@MainActivity,
+                this@LearnWordActivity,
                 R.drawable.shape_rounded_true
             )
             setTextColor(
                 ContextCompat.getColor(
-                    this@MainActivity,
+                    this@LearnWordActivity,
                     R.color.white
                 )
             )
         }
     }
 
-    private fun MainActivity.markAnswerNeutral(
+    private fun LearnWordActivity.markAnswerNeutral(
         llAnswer: LinearLayout,
         tvVariantValue: TextView,
         tvVariantNumb: TextView,
@@ -238,7 +236,7 @@ class MainActivity : AppCompatActivity() {
     ) {
 
         llAnswer.background = ContextCompat.getDrawable(
-            this@MainActivity,
+            this@LearnWordActivity,
             R.drawable.shape_rounded_containers_neutral
         )
 
@@ -246,7 +244,7 @@ class MainActivity : AppCompatActivity() {
 
         tvVariantValue.setTextColor(
             ContextCompat.getColor(
-                this@MainActivity,
+                this@LearnWordActivity,
                 R.color.textVariantsColor
             )
         )
@@ -254,12 +252,12 @@ class MainActivity : AppCompatActivity() {
 
         tvVariantNumb.apply {
             background = ContextCompat.getDrawable(
-                this@MainActivity,
+                this@LearnWordActivity,
                 R.drawable.shape_rounded_contains
             )
             setTextColor(
                 ContextCompat.getColor(
-                    this@MainActivity,
+                    this@LearnWordActivity,
                     R.color.textVariantsColor
                 )
             )

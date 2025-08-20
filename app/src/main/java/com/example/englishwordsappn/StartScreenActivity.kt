@@ -1,12 +1,8 @@
 package com.example.englishwordsappn
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.englishwordsappn.databinding.ActivityStartScreenBinding
-import kotlinx.coroutines.flow.combine
 
 class StartScreenActivity : AppCompatActivity() {
 
@@ -19,15 +15,34 @@ class StartScreenActivity : AppCompatActivity() {
         _binding = ActivityStartScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        goToMenuActivity()
+        goToStartLearnActivity()
+        goToStatisticActivity()
+        goToSettingsActivity()
     }
 
-    private fun goToMenuActivity() {
+
+    private fun goToStartLearnActivity() {
         binding.btStartLearn.setOnClickListener {
-            val intent = android.content.Intent(this, MainActivity::class.java)
+            val intent = android.content.Intent(this, LearnWordActivity::class.java)
             startActivity(intent)
             finish()
         }
     }
+
+    private fun goToStatisticActivity() {
+        binding.btProgressLearn.setOnClickListener {
+            val intent = android.content.Intent(this, StatisticsActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    private fun goToSettingsActivity() {
+        binding.btSettings.setOnClickListener {
+            val intent = android.content.Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
 }
