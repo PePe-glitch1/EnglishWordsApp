@@ -24,7 +24,7 @@
 
     <android.widget.Button
         android:id="@+id/btStartLearn"
-        android:layout_width="311dp"
+        android:layout_width="330dp"
         android:layout_height="80dp"
         android:layout_marginTop="110dp"
         android:text="@string/buton_start_studying"
@@ -37,7 +37,7 @@
 
     <android.widget.Button
         android:id="@+id/btProgressLearn"
-        android:layout_width="311dp"
+        android:layout_width="330dp"
         android:layout_height="80dp"
         android:layout_marginTop="17dp"
         android:background="@drawable/shape_rounded_containers"
@@ -50,7 +50,7 @@
 
     <android.widget.Button
         android:id="@+id/btSettingsApp"
-        android:layout_width="311dp"
+        android:layout_width="330dp"
         android:layout_height="80dp"
         android:layout_marginTop="17dp"
         android:background="@drawable/shape_rounded_containers"

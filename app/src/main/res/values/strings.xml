@@ -11,4 +11,12 @@
     <string name="text_statistics">Statistics</string>
     <string name="text_learned">Words learned</string>
     <string name="text_words_not_learned">Words not learned</string>
+    <string name="text_settings">Settings</string>
+    <string name="text_off">off</string>
+    <string name="text_on">on</string>
+    <string name="text_notifications">Notifications</string>
+    <string name="text_light">Light</string>
+    <string name="text_dark">Dark</string>
+    <string name="text_eng" translatable="false">Eng.</string>
+    <string name="text_learning_language">Learning language</string>
 </resources>

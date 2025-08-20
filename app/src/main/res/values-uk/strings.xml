@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">EnglishWordsApp</string>
     <string name="buton_continue">Продовжити</string>
     <string name="buton_skip">Пропустити</string>
     <string name="text_correct">Правильно!</string>
@@ -8,4 +7,13 @@
     <string name="button_progres_learn">Прогрес</string>
     <string name="button_settings">Налаштування</string>
     <string name="text_statistics">Cтатистика</string>
+    <string name="text_learned">Вивчені слова</string>
+    <string name="text_words_not_learned">Не вивчені слова</string>
+    <string name="text_settings">Налаштування</string>
+    <string name="text_off">Вимк</string>
+    <string name="text_on">Увімк</string>
+    <string name="text_notifications">Сповіщення</string>
+    <string name="text_light">Світла</string>
+    <string name="text_dark">Темна</string>
+    <string name="text_learning_language">Мова для вивчення</string>
 </resources>
