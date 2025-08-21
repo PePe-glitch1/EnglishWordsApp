@@ -11,55 +11,61 @@ data class Question(
     val correctAnswer: Word,
 )
 
+const val NUMBER_OF_ANSWERS: Int = 4
+
 class LearningWords {
-    private val dictionary = listOf(
-        Word("apple", "яблоко"),
-        Word("banana", "банан"),
-        Word("orange", "апельсин"),
-        Word("grape", "виноград"),
-        Word("kiwi", "киви"),
-        Word("peach", "персик"),
-        Word("pear", "груша"),
-        Word("strawberry", "клубника"),
-        Word("watermelon", "арбуз"),
-        Word("pineapple", "ананас")
-    )
+    companion object {
+        val dictionary = listOf(
+            Word("apple", "яблоко"),
+            Word("banana", "банан"),
+            Word("orange", "апельсин"),
+            Word("grape", "виноград"),
+            Word("kiwi", "киви"),
+            Word("peach", "персик"),
+            Word("pear", "груша"),
+            Word("strawberry", "клубника"),
+            Word("watermelon", "арбуз"),
+            Word("pineapple", "ананас")
+        )
+
+        fun learnedCount(): Int = dictionary.count { it.learned }
+        fun notLearnedCount(): Int = dictionary.count { !it.learned }
+    }
+
 
     private var _currentQuestion: Question? = null
-    val currentQuestion: Question?
-        get() = _currentQuestion
+    val currentQuestion: Question? get() = _currentQuestion
 
     fun getNextQuestion(): Question? {
         val notLearnedList = dictionary.filter { !it.learned }
-        if (notLearnedList.isEmpty()) return null
+        if (notLearnedList.isEmpty()) {
+            _currentQuestion = null
+            return null
+        }
 
-        val questionWords = if (notLearnedList.size < NUMBER_OF_ANSWERS) {
-            val learnedList = dictionary.filter { it.learned }.shuffled()
-            (notLearnedList + learnedList.take(NUMBER_OF_ANSWERS - notLearnedList.size)).shuffled()
+        val variants: List<Word> = if (notLearnedList.size < NUMBER_OF_ANSWERS) {
+            val learnedPool = dictionary.filter { it.learned }.shuffled()
+            (notLearnedList + learnedPool.take(NUMBER_OF_ANSWERS - notLearnedList.size)).shuffled()
         } else {
             notLearnedList.shuffled().take(NUMBER_OF_ANSWERS)
         }
 
-        val correctAnswer: Word = questionWords.random()
-
-        _currentQuestion = Question(
-            variants = questionWords,
-            correctAnswer = correctAnswer
-        )
+        val correct = variants.random()
+        _currentQuestion = Question(variants = variants, correctAnswer = correct)
         return _currentQuestion
     }
 
-    fun checkAnswer(userAnswerIndex: Int?): Boolean {
-        return currentQuestion?.let {
-            val correctAnswerId = it.variants.indexOf(it.correctAnswer)
-            if (correctAnswerId == userAnswerIndex) {
-                it.correctAnswer.learned = true
-                true
-            } else {
-                false
-            }
-        } ?: false
+    fun checkAnswer(userAnswerIndex: Int): Boolean {
+        val q = _currentQuestion ?: return false
+        val correctIndex = q.variants.indexOf(q.correctAnswer)
+        val ok = userAnswerIndex == correctIndex
+        if (ok) q.correctAnswer.learned = true
+        return ok
     }
-}
 
-const val NUMBER_OF_ANSWERS: Int = 4
+    fun correctTranslation(): String =
+        _currentQuestion?.correctAnswer?.translation.orEmpty()
+
+    fun correctIndex(): Int =
+        _currentQuestion?.let { it.variants.indexOf(it.correctAnswer) } ?: -1
+}
