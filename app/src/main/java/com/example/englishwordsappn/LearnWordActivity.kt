@@ -75,6 +75,13 @@ class LearnWordActivity : AppCompatActivity() {
         }
     }
 
+    private fun setOnClickListenerOff() {
+        binding.llAnswer1.setOnClickListener(null)
+        binding.llAnswer2.setOnClickListener(null)
+        binding.llAnswer3.setOnClickListener(null)
+        binding.llAnswer4.setOnClickListener(null)
+    }
+
     private fun showNextQuestion(trainer: LearningWords) {
         val firstirstQuestion: Question? = trainer.getNextQuestion()
         with(binding) {
@@ -99,16 +106,18 @@ class LearnWordActivity : AppCompatActivity() {
                             tvVariantValue1,
                             tvVariantNumb1
                         )
-                        showResultMessage(true)
+                        showResultMessage(trainer, true)
                     } else {
                         markAsWrong(
                             llAnswer1,
                             tvVariantValue1,
                             tvVariantNumb1
                         )
-                        showResultMessage(false)
+                        showResultMessage(trainer, false)
                     }
+                    setOnClickListenerOff()
                 }
+
                 llAnswer2.setOnClickListener {
                     if (trainer.checkAnswer(1)){
                         markAsCorrect(
@@ -116,16 +125,18 @@ class LearnWordActivity : AppCompatActivity() {
                             tvVariantValue2,
                             tvVariantNumb2
                         )
-                        showResultMessage(true)
+                        showResultMessage(trainer, true)
                     } else {
                         markAsWrong(
                             llAnswer2,
                             tvVariantValue2,
                             tvVariantNumb2
                         )
-                        showResultMessage(false)
+                        showResultMessage(trainer, false)
                     }
+                    setOnClickListenerOff()
                 }
+
                 llAnswer3.setOnClickListener {
                     if (trainer.checkAnswer(2)) {
                         markAsCorrect(
@@ -133,16 +144,18 @@ class LearnWordActivity : AppCompatActivity() {
                             tvVariantValue3,
                             tvVariantNumb3
                         )
-                        showResultMessage(true)
+                        showResultMessage(trainer, true)
                     } else {
                         markAsWrong(
                             llAnswer3,
                             tvVariantValue3,
                             tvVariantNumb3
                         )
-                        showResultMessage(false)
+                        showResultMessage(trainer, false)
                     }
+                    setOnClickListenerOff()
                 }
+
                 llAnswer4.setOnClickListener {
                     if (trainer.checkAnswer(3)) {
                         markAsCorrect(
@@ -150,15 +163,16 @@ class LearnWordActivity : AppCompatActivity() {
                             tvVariantValue4,
                             tvVariantNumb4
                         )
-                        showResultMessage(true)
+                        showResultMessage(trainer, true)
                     } else {
                         markAsWrong(
                             llAnswer4,
                             tvVariantValue4,
                             tvVariantNumb4
                         )
-                        showResultMessage(false)
+                        showResultMessage(trainer, false)
                     }
+                    setOnClickListenerOff()
                 }
             }
 
@@ -267,17 +281,23 @@ class LearnWordActivity : AppCompatActivity() {
 
     }
 
-    private fun showResultMessage(isCorrect: Boolean) {
+    private fun showResultMessage(trainer: LearningWords, isCorrect: Boolean) {
         val color: Int
         val message: String
+        var transient: String
         val resultIcon: Int
+
         if (isCorrect) {
             color = ContextCompat.getColor(this, R.color.trueColor)
             message = getString(R.string.text_correct)
+            transient = ""
             resultIcon = R.drawable.ic_correct_answer
         } else {
             color = ContextCompat.getColor(this, R.color.falseColor)
-            message = getString(R.string.text_wrong)
+            val correctTranslation =
+                trainer.currentQuestion?.correctAnswer?.translation.orEmpty()
+            message = getString(R.string.incorrect_correct_translation)
+            transient = correctTranslation
             resultIcon = R.drawable.ic_wrong_answer
         }
         with(binding){
@@ -286,6 +306,7 @@ class LearnWordActivity : AppCompatActivity() {
             btFinalContinue.setTextColor(color)
             clFinalScoreboard.setBackgroundColor(color)
             tvFinalScoreboard.text = message
+            tvFinalTranslation.text = transient
             ivFinalImage.setImageResource(resultIcon)
 
         }

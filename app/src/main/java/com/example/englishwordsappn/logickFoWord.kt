@@ -25,7 +25,9 @@ class LearningWords {
         Word("pineapple", "ананас")
     )
 
-    private var currentQuestion: Question? = null
+    private var _currentQuestion: Question? = null
+    val currentQuestion: Question?
+        get() = _currentQuestion
 
     fun getNextQuestion(): Question? {
         val notLearnedList = dictionary.filter { !it.learned }
@@ -40,11 +42,11 @@ class LearningWords {
 
         val correctAnswer: Word = questionWords.random()
 
-        currentQuestion = Question(
+        _currentQuestion = Question(
             variants = questionWords,
             correctAnswer = correctAnswer
         )
-        return currentQuestion
+        return _currentQuestion
     }
 
     fun checkAnswer(userAnswerIndex: Int?): Boolean {

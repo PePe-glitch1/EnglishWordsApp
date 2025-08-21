@@ -16,4 +16,6 @@
     <string name="text_light">Світла</string>
     <string name="text_dark">Темна</string>
     <string name="text_learning_language">Мова для вивчення</string>
+    <string name="text_team">Тема</string>
+    <string name="incorrect_correct_translation">Невірно! Правильно:</string>
 </resources>

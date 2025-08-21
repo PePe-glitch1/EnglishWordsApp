@@ -218,10 +218,23 @@
             android:text="@string/text_correct"
             android:layout_marginStart="8dp"
             android:textColor="#ffffff"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:fontFamily="@font/rubik_regular"
             app:layout_constraintBottom_toBottomOf="@+id/ivFinalImage"
             app:layout_constraintStart_toEndOf="@+id/ivFinalImage"
+            app:layout_constraintTop_toTopOf="@+id/ivFinalImage" />
+
+        <TextView
+            android:id="@+id/tvFinalTranslation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginStart="8dp"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:fontFamily="@font/rubik_regular"
+            app:layout_constraintBottom_toBottomOf="@+id/ivFinalImage"
+            app:layout_constraintStart_toEndOf="@+id/tvFinalScoreboard"
             app:layout_constraintTop_toTopOf="@+id/ivFinalImage" />
 
         <android.widget.Button
