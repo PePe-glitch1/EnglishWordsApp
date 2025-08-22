@@ -17,7 +17,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+    repositories { google(); mavenCentral() }
 }
 
 rootProject.name = "EnglishWordsApp n"
 include(":app")
+
