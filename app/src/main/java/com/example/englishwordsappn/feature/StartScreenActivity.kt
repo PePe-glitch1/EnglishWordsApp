@@ -1,5 +1,6 @@
-package com.example.englishwordsappn
+package com.example.englishwordsappn.feature
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.englishwordsappn.databinding.ActivityStartScreenBinding
@@ -23,7 +24,7 @@ class StartScreenActivity : AppCompatActivity() {
 
     private fun goToStartLearnActivity() {
         binding.btStartLearn.setOnClickListener {
-            val intent = android.content.Intent(this, LearnWordActivity::class.java)
+            val intent = Intent(this, LearnWordActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -31,7 +32,7 @@ class StartScreenActivity : AppCompatActivity() {
 
     private fun goToStatisticActivity() {
         binding.btProgressLearn.setOnClickListener {
-            val intent = android.content.Intent(this, StatisticsActivity::class.java)
+            val intent = Intent(this, StatisticsActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -39,7 +40,7 @@ class StartScreenActivity : AppCompatActivity() {
 
     private fun goToSettingsActivity() {
         binding.btSettings.setOnClickListener {
-            val intent = android.content.Intent(this, SettingsActivity::class.java)
+            val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
             finish()
         }

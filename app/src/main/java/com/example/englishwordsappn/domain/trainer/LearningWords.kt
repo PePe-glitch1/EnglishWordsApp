@@ -1,37 +1,13 @@
-package com.example.englishwordsappn
+package com.example.englishwordsappn.domain.trainer
 
-data class Word(
-    val word: String,
-    val translation: String,
-    var learned: Boolean = false,
-)
+import com.example.englishwordsappn.domain.model.Question
+import com.example.englishwordsappn.domain.model.Word
+import com.example.englishwordsappn.data.WordsRepository.words as dictionary
 
-data class Question(
-    val variants: List<Word>,
-    val correctAnswer: Word,
-)
 
 const val NUMBER_OF_ANSWERS: Int = 4
 
 class LearningWords {
-    companion object {
-        val dictionary = listOf(
-            Word("apple", "яблоко"),
-            Word("banana", "банан"),
-            Word("orange", "апельсин"),
-            Word("grape", "виноград"),
-            Word("kiwi", "киви"),
-            Word("peach", "персик"),
-            Word("pear", "груша"),
-            Word("strawberry", "клубника"),
-            Word("watermelon", "арбуз"),
-            Word("pineapple", "ананас")
-        )
-
-        fun learnedCount(): Int = dictionary.count { it.learned }
-        fun notLearnedCount(): Int = dictionary.count { !it.learned }
-    }
-
 
     private var _currentQuestion: Question? = null
     val currentQuestion: Question? get() = _currentQuestion

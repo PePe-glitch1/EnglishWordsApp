@@ -1,10 +1,10 @@
-package com.example.englishwordsappn
+package com.example.englishwordsappn.feature
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.englishwordsappn.feature.StartScreenActivity
 import com.example.englishwordsappn.databinding.ActivitySettingsBinding
-import com.example.englishwordsappn.databinding.ActivityStatisticsBinding
 
 class SettingsActivity : AppCompatActivity() {
     private var _binding: ActivitySettingsBinding? = null
@@ -21,7 +21,7 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun returnToStartScreen() {
         binding.ibTurnOff.setOnClickListener {
-            var intent = android.content.Intent(this, StartScreenActivity::class.java)
+            var intent = Intent(this, StartScreenActivity::class.java)
             startActivity(intent)
             finish()
         }

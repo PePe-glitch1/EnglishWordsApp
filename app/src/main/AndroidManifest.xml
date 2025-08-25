@@ -13,7 +13,7 @@
         android:theme="@style/Theme.EnglishWordsAppN">
 
         <activity
-            android:name=".StartScreenActivity"
+            android:name=".feature.StartScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,15 +23,15 @@
         </activity>
 
         <activity
-            android:name=".SettingsActivity"
+            android:name=".feature.SettingsActivity"
             android:exported="false" />
 
         <activity
-            android:name=".StatisticsActivity"
+            android:name=".feature.StatisticsActivity"
             android:exported="false" />
 
         <activity
-            android:name=".LearnWordActivity"
+            android:name=".feature.LearnWordActivity"
             android:exported="false" />
 
     </application>

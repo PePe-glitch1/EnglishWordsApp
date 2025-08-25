@@ -1,13 +1,12 @@
-package com.example.englishwordsappn
+package com.example.englishwordsappn.feature
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.englishwordsappn.databinding.ActivityStartScreenBinding
+import com.example.englishwordsappn.domain.trainer.LearningWords
 import com.example.englishwordsappn.databinding.ActivityStatisticsBinding
-import java.lang.Character.toString
+import com.example.englishwordsappn.data.WordsRepository
+
 
 class StatisticsActivity : AppCompatActivity() {
         private var _binding: ActivityStatisticsBinding? = null
@@ -30,14 +29,14 @@ class StatisticsActivity : AppCompatActivity() {
 
     private fun returnToStartScreen() {
         binding.ibTurnOff.setOnClickListener {
-            var intent = android.content.Intent(this, StartScreenActivity::class.java)
+            var intent = Intent(this, StartScreenActivity::class.java)
             startActivity(intent)
             finish()
         }
     }
 
     private fun updateStats() {
-        binding.tvStatisticLearned.text = LearningWords.learnedCount().toString()
-        binding.tvStatisticAnLearned.text = LearningWords.notLearnedCount().toString()
+        binding.tvStatisticLearned.text = WordsRepository.learnedCount().toString()
+        binding.tvStatisticAnLearned.text = WordsRepository.notLearnedCount().toString()
     }
 }

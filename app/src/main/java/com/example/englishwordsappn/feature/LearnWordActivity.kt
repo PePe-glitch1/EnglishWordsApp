@@ -1,5 +1,6 @@
-package com.example.englishwordsappn
+package com.example.englishwordsappn.feature
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
@@ -8,8 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.example.englishwordsappn.domain.trainer.LearningWords
+import com.example.englishwordsappn.domain.trainer.NUMBER_OF_ANSWERS
+import com.example.englishwordsappn.domain.model.Question
+import com.example.englishwordsappn.R
 import com.example.englishwordsappn.databinding.ActivityLearnWordBinding
-
 
 class LearnWordActivity : AppCompatActivity() {
     private var _binding: ActivityLearnWordBinding? = null
@@ -69,7 +73,7 @@ class LearnWordActivity : AppCompatActivity() {
 
     private fun returnToStartScreen() {
         binding.ibTurnOff.setOnClickListener {
-            var intent = android.content.Intent(this, StartScreenActivity::class.java)
+            var intent = Intent(this, StartScreenActivity::class.java)
             startActivity(intent)
             finish()
         }

@@ -5,7 +5,7 @@
     android:id="@+id/startScreenLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartScreenActivity">
+    tools:context=".feature.StartScreenActivity">
 
     <TextView
         android:id="@+id/tvStartScreenText"
