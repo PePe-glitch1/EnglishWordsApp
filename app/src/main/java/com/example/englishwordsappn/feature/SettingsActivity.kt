@@ -18,6 +18,9 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.tvTeamOnOff.text=
+            if (Prefs.isDark()) getString(com.example.englishwordsappn.R.string.text_light)
+            else getString(com.example.englishwordsappn.R.string.text_dark)
 
         returnToStartScreen()
 
