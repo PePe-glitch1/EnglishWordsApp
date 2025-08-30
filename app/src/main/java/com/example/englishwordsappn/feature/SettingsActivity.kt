@@ -4,8 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.NotificationManagerCompat
-import com.example.englishwordsappn.feature.StartScreenActivity
+import androidx.core.os.LocaleListCompat
 import com.example.englishwordsappn.databinding.ActivitySettingsBinding
 import com.example.englishwordsappn.data.Prefs
 
@@ -18,6 +17,7 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.tvTeamOnOff.text=
             if (Prefs.isDark()) getString(com.example.englishwordsappn.R.string.text_light)
             else getString(com.example.englishwordsappn.R.string.text_dark)
@@ -26,11 +26,11 @@ class SettingsActivity : AppCompatActivity() {
 
         val notification = Prefs.isNotificationON()
         val team = Prefs.isDark()
-        val learnLanguage = Prefs.getLearningLanguage()
+        val language = Prefs.getLanguage()
 
         onOffNotification(notification)
         onOffTeam(team)
-        setLearningLanguage(learnLanguage)
+        setLanguage(language)
 
     }
 
@@ -54,7 +54,16 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-    private fun setLearningLanguage(learnLanguage: String) {
+    private fun setLanguage(language: String) {
+        binding.clSettings2.setOnClickListener {
+            if(language == "uk"){
+                AppCompatDelegate.setApplicationLocales(LocaleListCompat.getEmptyLocaleList())
+                Prefs.setLanguage("default")
+            } else if(language == "default"){
+                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("uk"))
+                Prefs.setLanguage("uk")
+            }
+        }
     }
 
 

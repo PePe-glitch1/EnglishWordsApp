@@ -18,7 +18,7 @@
     <string name="text_light">Light</string>
     <string name="text_dark">Dark</string>
     <string name="text_eng" translatable="false">Eng.</string>
-    <string name="text_learning_language">Learning language</string>
+    <string name="text_learning_language">Language</string>
     <string name="text_team">Team</string>
     <string name="incorrect_correct_translation">Incorrect! Correct:</string>
 </resources>

@@ -12,5 +12,7 @@ class App : Application() {
             if (Prefs.isDark()) AppCompatDelegate.MODE_NIGHT_NO
             else AppCompatDelegate.MODE_NIGHT_YES
         )
+
+
     }
 }

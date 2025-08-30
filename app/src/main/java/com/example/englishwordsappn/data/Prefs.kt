@@ -21,7 +21,7 @@ object Prefs {
     }
 
 
-    fun setLearningLanguage(value: String) {
+    fun setLanguage(value: String) {
         sp.edit().putString(KEY_LEARN_LANGUAGE, value).apply()
     }
 
@@ -31,7 +31,7 @@ object Prefs {
     fun isDark(): Boolean =
         sp.getBoolean(KEY_IS_DARK, true)
 
-    fun getLearningLanguage(default: String = "Eng"): String =
+    fun getLanguage(default: String = "default"): String =
         sp.getString(KEY_LEARN_LANGUAGE, default) ?: default
 
 }
