@@ -5,24 +5,24 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
-import com.example.englishwordsappn.databinding.ActivitySettingsBinding
+import com.example.englishwordsappn.R
 import com.example.englishwordsappn.data.Prefs
+import com.example.englishwordsappn.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
     private var _binding: ActivitySettingsBinding? = null
-    val binding
-        get() = _binding ?: throw IllegalStateException("Binding is not initialized")
+    private val binding get() = _binding ?: error("Binding is not initialized")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.tvTeamOnOff.text=
-            if (Prefs.isDark()) getString(com.example.englishwordsappn.R.string.text_light)
-            else getString(com.example.englishwordsappn.R.string.text_dark)
-
-        returnToStartScreen()
+        binding.tvTeamOnOff.text = if (Prefs.isDark()) {
+            getString(R.string.text_light)
+        } else {
+            getString(R.string.text_dark)
+        }
 
         val notification = Prefs.isNotificationON()
         val team = Prefs.isDark()
@@ -31,24 +31,27 @@ class SettingsActivity : AppCompatActivity() {
         onOffNotification(notification)
         onOffTeam(team)
         setLanguage(language)
-
+        returnToStartScreen()
     }
 
     private fun onOffNotification(notification: Boolean) {
+
+        binding.clSettings1.setOnClickListener {
+            // TODO: включение/выключение уведомлений
+        }
     }
 
     private fun onOffTeam(team: Boolean) {
         binding.clSettings3.setOnClickListener {
-            if (team) {
+            val isDark = Prefs.isDark()
+            if (isDark) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 Prefs.setDark(false)
-                binding.tvTeamOnOff.text =
-                    getString(com.example.englishwordsappn.R.string.text_dark)
+                binding.tvTeamOnOff.text = getString(R.string.text_light)
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 Prefs.setDark(true)
-                binding.tvTeamOnOff.text =
-                    getString(com.example.englishwordsappn.R.string.text_light)
+                binding.tvTeamOnOff.text = getString(R.string.text_dark)
             }
             recreate()
         }
@@ -66,12 +69,15 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-
     private fun returnToStartScreen() {
         binding.ibTurnOff.setOnClickListener {
-            var intent = Intent(this, StartScreenActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, StartScreenActivity::class.java))
             finish()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

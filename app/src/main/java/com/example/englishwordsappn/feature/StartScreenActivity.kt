@@ -6,44 +6,24 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.englishwordsappn.databinding.ActivityStartScreenBinding
 
 class StartScreenActivity : AppCompatActivity() {
-
     private var _binding: ActivityStartScreenBinding? = null
-    val binding
-        get() = _binding ?: throw IllegalStateException("Binding is not initialized")
+    private val binding get() = _binding ?: error("Binding is not initialized")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityStartScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        goToStartLearnActivity()
-        goToStatisticActivity()
-        goToSettingsActivity()
-    }
-
-
-    private fun goToStartLearnActivity() {
         binding.btStartLearn.setOnClickListener {
-            val intent = Intent(this, LearnWordActivity::class.java)
-            startActivity(intent)
-            finish()
+            startActivity(Intent(this, LearnWordActivity::class.java))
         }
-    }
-
-    private fun goToStatisticActivity() {
         binding.btProgressLearn.setOnClickListener {
-            val intent = Intent(this, StatisticsActivity::class.java)
-            startActivity(intent)
-            finish()
+            startActivity(Intent(this, StatisticsActivity::class.java))
         }
-    }
-
-    private fun goToSettingsActivity() {
         binding.btSettings.setOnClickListener {
-            val intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
-            finish()
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
     }
 
+    override fun onDestroy() { super.onDestroy(); _binding = null }
 }

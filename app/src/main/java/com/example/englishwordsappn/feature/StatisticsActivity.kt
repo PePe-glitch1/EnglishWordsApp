@@ -3,40 +3,41 @@ package com.example.englishwordsappn.feature
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.englishwordsappn.domain.trainer.LearningWords
+import androidx.lifecycle.lifecycleScope
 import com.example.englishwordsappn.databinding.ActivityStatisticsBinding
-import com.example.englishwordsappn.data.WordsRepository
-
+import com.example.englishwordsappn.domain.model.WordDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class StatisticsActivity : AppCompatActivity() {
-        private var _binding: ActivityStatisticsBinding? = null
-        val binding
-        get() = _binding ?: throw IllegalStateException("Binding is not initialized")
+    private var _binding: ActivityStatisticsBinding? = null
+    private val binding get() = _binding ?: error("Binding is not initialized")
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            _binding = ActivityStatisticsBinding.inflate(layoutInflater)
-            setContentView(binding.root)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        _binding = ActivityStatisticsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-            updateStats()
-            returnToStartScreen()
-    }
-
-    override fun onStart() {
-        super.onStart()
         updateStats()
-    }
-
-    private fun returnToStartScreen() {
         binding.ibTurnOff.setOnClickListener {
-            var intent = Intent(this, StartScreenActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, StartScreenActivity::class.java))
             finish()
         }
     }
 
+    override fun onStart() { super.onStart(); updateStats() }
+
+    override fun onDestroy() { super.onDestroy(); _binding = null }
+
     private fun updateStats() {
-        binding.tvStatisticLearned.text = WordsRepository.learnedCount().toString()
-        binding.tvStatisticAnLearned.text = WordsRepository.notLearnedCount().toString()
+        val dao = WordDatabase.getDatabase(this).wordDao()
+        lifecycleScope.launch {
+            val (learned, notLearned) = withContext(Dispatchers.IO) {
+                dao.learnedCount() to dao.notLearnedCount()
+            }
+            binding.tvStatisticLearned.text = learned.toString()
+            binding.tvStatisticAnLearned.text = notLearned.toString()
+        }
     }
 }

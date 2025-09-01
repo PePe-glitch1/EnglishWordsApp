@@ -29,7 +29,7 @@ object Prefs {
         sp.getBoolean(KEY_NOTIFICATION, false)
 
     fun isDark(): Boolean =
-        sp.getBoolean(KEY_IS_DARK, true)
+        sp.getBoolean(KEY_IS_DARK, false)
 
     fun getLanguage(default: String = "default"): String =
         sp.getString(KEY_LEARN_LANGUAGE, default) ?: default
