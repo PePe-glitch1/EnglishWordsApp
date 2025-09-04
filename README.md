@@ -18,19 +18,21 @@ It uses a local Room database, shows progress statistics, and includes theme & l
 ## 📱 Screens
 
 - **Start Screen** (menu: Learn, Statistics, Settings)  
-  _PLACE SCREENSHOT HERE_
+z<img width="1080" height="2400" alt="Screenshot_20250904-184459" src="https://github.com/user-attachments/assets/93947d7f-ce29-42ae-bf2a-fa0d26ca125b" />
 
 - **Training Screen** (question + 4 answers)  
-  _PLACE SCREENSHOT HERE_
+<img width="1080" height="2400" alt="Screenshot_20250904-184522" src="https://github.com/user-attachments/assets/24b7d8e0-fb16-48dd-98ea-8b39525742a2" />
+
 
 - **Answer Feedback (Correct / Wrong)**  
-  _PLACE SCREENSHOT HERE_
+<img width="1080" height="2400" alt="Screenshot_20250904-184511" src="https://github.com/user-attachments/assets/57dd8186-198e-4160-8382-2e3f4a78578b" />
+<img width="1080" height="2400" alt="Screenshot_20250904-184518" src="https://github.com/user-attachments/assets/f93b8d10-c328-4d20-bd59-f511918fda66" />
 
 - **Statistics Screen** (learned vs not learned counts)  
-  _PLACE SCREENSHOT HERE_
+<img width="1080" height="2400" alt="Screenshot_20250904-184528" src="https://github.com/user-attachments/assets/b6826de9-78eb-4c19-8928-c40ce9ec27f7" />
 
 - **Settings Screen** (theme, language, notifications)  
-  _PLACE SCREENSHOT HERE_
+<img width="1080" height="2400" alt="Screenshot_20250904-184535" src="https://github.com/user-attachments/assets/84fbe006-dcb1-4bea-9dc4-5baa98c73d28" />
 
 ---
 
@@ -49,11 +51,8 @@ It uses a local Room database, shows progress statistics, and includes theme & l
 ## 🗂 Project Structure
 
 app/
-
 ├─ src/main/assets/
-
 │ └─ mydb.db # initial Room database asset
-
 ├─ java/com/example/englishwordsappn/
 │ ├─ data/ # Word.kt, WordDao.kt, Prefs.kt
 │ ├─ domain/
