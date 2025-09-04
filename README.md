@@ -87,4 +87,10 @@ app/
 ### Clone & Open
 ```bash
 git clone https://github.com/PePe-glitch1/EnglishWordsApp.git
+```
+
+## 📥 Download
+
+- **[Download latest APK](https://github.com/PePe-glitch1/EnglishWordsApp/releases/latest)**
+
 
