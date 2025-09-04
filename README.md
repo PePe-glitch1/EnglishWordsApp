@@ -18,7 +18,7 @@ It uses a local Room database, shows progress statistics, and includes theme & l
 ## 📱 Screens
 
 - **Start Screen** (menu: Learn, Statistics, Settings)  
-z<img width="1080" height="2400" alt="Screenshot_20250904-184459" src="https://github.com/user-attachments/assets/93947d7f-ce29-42ae-bf2a-fa0d26ca125b" />
+z<img width="250" height="500" alt="Screenshot_20250904-184459" src="https://github.com/user-attachments/assets/93947d7f-ce29-42ae-bf2a-fa0d26ca125b" />
 
 - **Training Screen** (question + 4 answers)  
 <img width="1080" height="2400" alt="Screenshot_20250904-184522" src="https://github.com/user-attachments/assets/24b7d8e0-fb16-48dd-98ea-8b39525742a2" />
