@@ -49,8 +49,11 @@ It uses a local Room database, shows progress statistics, and includes theme & l
 ## 🗂 Project Structure
 
 app/
+
 ├─ src/main/assets/
+
 │ └─ mydb.db # initial Room database asset
+
 ├─ java/com/example/englishwordsappn/
 │ ├─ data/ # Word.kt, WordDao.kt, Prefs.kt
 │ ├─ domain/
